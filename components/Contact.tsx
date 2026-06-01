@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Send, Mail, CheckCircle2, Clock, Globe, MessageSquare } from "lucide-react";
+import { useActionState, useRef, useState } from "react";
+import { AlertCircle, Send, Mail, CheckCircle2, Clock, Globe, Loader2, MessageSquare } from "lucide-react";
 import { LinkedinIcon } from "@/components/Icons";
+import { submitInquiry, type ContactState } from "@/app/actions/contact";
 
 const services = [
   "Web Application Development",
@@ -12,20 +13,13 @@ const services = [
   "Other / Not Sure Yet",
 ];
 
+const initialState: ContactState = { ok: false };
+
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "", company: "", email: "", service: "", budget: "", message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const [state, formAction, pending] = useActionState(submitInquiry, initialState);
+  const [dismissed, setDismissed] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const showSuccess = state.ok && !dismissed;
 
   const inputStyle = {
     background: "#181926",
@@ -61,8 +55,8 @@ export default function Contact() {
               {
                 icon: Mail,
                 label: "Email Us",
-                value: "info@momztech.com",
-                href: "mailto:info@momztech.com",
+                value: "gewilira.morales@momztech.com",
+                href: "mailto:gewilira.morales@momztech.com",
                 accent: "#6C63FF",
                 bg: "rgba(108,99,255,0.08)",
               },
@@ -157,7 +151,7 @@ export default function Contact() {
                 boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
               }}
             >
-              {submitted ? (
+              {showSuccess ? (
                 <div className="flex flex-col items-center justify-center gap-5 py-10 text-center">
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center"
@@ -175,15 +169,20 @@ export default function Contact() {
                   <button
                     className="btn-outline text-sm"
                     onClick={() => {
-                      setSubmitted(false);
-                      setForm({ name: "", company: "", email: "", service: "", budget: "", message: "" });
+                      formRef.current?.reset();
+                      setDismissed(true);
                     }}
                   >
                     Send another message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <form
+                  ref={formRef}
+                  action={formAction}
+                  onSubmit={() => setDismissed(false)}
+                  className="flex flex-col gap-5"
+                >
                   <div className="flex items-center gap-2 mb-1">
                     <MessageSquare size={18} style={{ color: "#6C63FF" }} />
                     <h3 className="font-bold text-lg" style={{ color: "#EEEEFF" }}>
@@ -204,8 +203,6 @@ export default function Contact() {
                           type="text"
                           name={f.name}
                           required={f.req}
-                          value={form[f.name as keyof typeof form]}
-                          onChange={handleChange}
                           placeholder={f.placeholder}
                           className="w-full px-4 py-2.5 rounded-xl text-sm"
                           style={inputStyle}
@@ -222,8 +219,6 @@ export default function Contact() {
                       type="email"
                       name="email"
                       required
-                      value={form.email}
-                      onChange={handleChange}
                       placeholder="jane@acmecorp.com"
                       className="w-full px-4 py-2.5 rounded-xl text-sm"
                       style={inputStyle}
@@ -237,8 +232,7 @@ export default function Contact() {
                       </label>
                       <select
                         name="service"
-                        value={form.service}
-                        onChange={handleChange}
+                        defaultValue=""
                         className="w-full px-4 py-2.5 rounded-xl text-sm"
                         style={inputStyle}
                       >
@@ -254,8 +248,7 @@ export default function Contact() {
                       </label>
                       <select
                         name="budget"
-                        value={form.budget}
-                        onChange={handleChange}
+                        defaultValue=""
                         className="w-full px-4 py-2.5 rounded-xl text-sm"
                         style={inputStyle}
                       >
@@ -276,8 +269,6 @@ export default function Contact() {
                     <textarea
                       name="message"
                       required
-                      value={form.message}
-                      onChange={handleChange}
                       rows={5}
                       placeholder="Describe your project, goals, timeline, and any specific technical requirements…"
                       className="w-full px-4 py-2.5 rounded-xl text-sm resize-none"
@@ -285,8 +276,35 @@ export default function Contact() {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary justify-center w-full">
-                    <Send size={16} /> Send Project Inquiry
+                  {state.error && !pending ? (
+                    <div
+                      className="flex items-start gap-2 rounded-xl px-4 py-3 text-sm"
+                      style={{
+                        background: "rgba(239,68,68,0.08)",
+                        border: "1px solid rgba(239,68,68,0.3)",
+                        color: "#FCA5A5",
+                      }}
+                      role="alert"
+                    >
+                      <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+                      <span>{state.error}</span>
+                    </div>
+                  ) : null}
+
+                  <button
+                    type="submit"
+                    disabled={pending}
+                    className="btn-primary justify-center w-full disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {pending ? (
+                      <>
+                        <Loader2 size={16} className="animate-spin" /> Sending…
+                      </>
+                    ) : (
+                      <>
+                        <Send size={16} /> Send Project Inquiry
+                      </>
+                    )}
                   </button>
                 </form>
               )}

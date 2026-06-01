@@ -56,8 +56,24 @@ The right panel animations use `willChange: "transform"` to keep them GPU-compos
 
 `components/Icons.tsx` exports `GithubIcon` and `LinkedinIcon` as inline SVGs. Import from there — do not attempt to import `Github` or `Linkedin` from `lucide-react` (they don't exist in v1).
 
+## Contact form
+
+The Project Inquiry form on `Contact.tsx` submits via the Server Action `submitInquiry` in `app/actions/contact.ts`, which sends mail through nodemailer over SMTP. Required env vars (set in `.env.local`):
+
+| Var | Required | Example |
+|---|---|---|
+| `SMTP_HOST` | yes | `smtp.gmail.com` |
+| `SMTP_PORT` | yes | `465` (SSL) or `587` (STARTTLS) |
+| `SMTP_SECURE` | optional | `true` for port 465, omit/`false` for 587 |
+| `SMTP_USER` | yes | sending account username |
+| `SMTP_PASS` | yes | app password / SMTP credential |
+| `SMTP_FROM` | optional | defaults to `SMTP_USER` |
+| `CONTACT_TO` | optional | defaults to `gewilira.morales@momztech.com` |
+
+The action runs server-side; the secrets never reach the browser. The form uses `useActionState` with uncontrolled inputs — do not re-introduce controlled `value`/`onChange` plumbing.
+
 ## Content notes
 
-- **Contact email:** `info@momztech.com`
+- **Contact email:** `gewilira.morales@momztech.com`
 - No past-work/portfolio section — the company is new; trust is built through 30+ years combined developer experience messaging
 - The `components/Projects.tsx` file exists but is **not imported** in `app/page.tsx` — it is unused dead code

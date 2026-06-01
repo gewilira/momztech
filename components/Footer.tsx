@@ -34,7 +34,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 mt-1">
               <a
-                href="mailto:info@momztech.com"
+                href="mailto:gewilira.morales@momztech.com"
                 className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:scale-110"
                 style={{ background: "rgba(108,99,255,0.1)" }}
                 aria-label="Email"
