@@ -22,147 +22,99 @@ export default function Contact() {
   const showSuccess = state.ok && !dismissed;
 
   const inputStyle = {
-    background: "#181926",
-    border: "1px solid rgba(108,99,255,0.2)",
-    color: "#EEEEFF",
+    background: "#16120F",
+    border: "1px solid #3A2E24",
+    color: "#F4EBE0",
   };
 
   return (
-    <section
-      id="contact"
-      className="py-28"
-      style={{ background: "#181926" }}
-    >
+    <section id="contact" className="py-[88px]" style={{ background: "#16120F" }}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="section-label">Contact Us</span>
-          <h2 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight" style={{ color: "#EEEEFF" }}>
-            Let&apos;s Build Something{" "}
-            <span className="text-gradient">Great Together</span>
+        <div className="max-w-2xl mb-12">
+          <p className="mono-label">Contact us</p>
+          <h2 className="mt-3.5 font-semibold tracking-tight" style={{ fontSize: "clamp(30px,4.4vw,52px)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#F4EBE0" }}>
+            Let&apos;s build something{" "}
+            <span className="font-serif-italic" style={{ color: "#E29A5C" }}>great together.</span>
           </h2>
-          <p className="mt-4 text-base max-w-xl mx-auto leading-relaxed" style={{ color: "#8888AA" }}>
+          <p className="mt-4 text-base max-w-xl leading-relaxed" style={{ color: "#A89684" }}>
             Tell us about your project. We respond within 24 hours with an honest
-            assessment and next steps.
+            assessment and next steps — no commitment required.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 
           {/* Info panel */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          <div className="lg:col-span-2 flex flex-col gap-3.5">
             {[
               {
                 icon: Mail,
-                label: "Email Us",
+                label: "Email us",
                 value: "gewilira.morales@momztech.com",
                 href: "mailto:gewilira.morales@momztech.com",
-                accent: "#6C63FF",
-                bg: "rgba(108,99,255,0.08)",
               },
               {
                 icon: LinkedinIcon,
                 label: "LinkedIn",
                 value: "linkedin.com/company/momztech",
                 href: "#",
-                accent: "#00B4D8",
-                bg: "rgba(0,180,216,0.08)",
               },
               {
                 icon: Globe,
                 label: "Location",
                 value: "Remote · Worldwide",
                 href: "#",
-                accent: "#10B981",
-                bg: "rgba(16,185,129,0.08)",
               },
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="flex items-center gap-4 p-4 rounded-xl transition-all duration-200"
-                  style={{
-                    background: "#22243A",
-                    border: "1px solid rgba(108,99,255,0.14)",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.borderColor = `${item.accent}35`;
-                    e.currentTarget.style.boxShadow = `0 4px 16px ${item.accent}14`;
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(108,99,255,0.1)";
-                    e.currentTarget.style.boxShadow = "0 1px 4px rgba(108,99,255,0.04)";
-                  }}
-                >
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: item.bg }}
-                  >
-                    <Icon size={18} style={{ color: item.accent }} />
-                  </div>
+                <a key={item.label} href={item.href} className="ctline flex items-start gap-3.5 p-5">
+                  <Icon size={20} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
                   <div>
-                    <div className="text-xs font-semibold mb-0.5" style={{ color: "#5A5A7A" }}>
+                    <div className="mono-label" style={{ fontSize: "0.6875rem" }}>
                       {item.label}
                     </div>
-                    <div className="text-sm font-medium" style={{ color: "#EEEEFF" }}>{item.value}</div>
+                    <div className="text-sm font-medium mt-1" style={{ color: "#F4EBE0" }}>{item.value}</div>
                   </div>
                 </a>
               );
             })}
 
-            {/* Response time card */}
-            <div
-              className="rounded-xl p-5 flex flex-col gap-3"
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid rgba(108,99,255,0.12)",
-                boxShadow: "0 1px 4px rgba(108,99,255,0.04)",
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <Clock size={16} style={{ color: "#6C63FF" }} />
-                <span className="text-sm font-semibold" style={{ color: "#EEEEFF" }}>
-                  Typical response time
-                </span>
+            {/* Availability box */}
+            <div className="ctline p-6 mt-1.5">
+              <div className="flex items-start gap-2.5 mb-3.5">
+                <Clock size={18} style={{ color: "#5FD0C5", flexShrink: 0, marginTop: "1px" }} />
+                <div>
+                  <div className="text-sm font-medium" style={{ color: "#F4EBE0" }}>Typical response time</div>
+                  <div className="text-sm mt-0.5" style={{ color: "#A89684" }}>Within 24 hours on business days.</div>
+                </div>
               </div>
-              <p className="text-sm" style={{ color: "#8888AA" }}>
-                We respond to all inquiries within{" "}
-                <strong style={{ color: "#6C63FF" }}>24 hours</strong> on business days.
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="glow-dot" />
-                <span className="text-xs font-medium" style={{ color: "#EEEEFF" }}>
-                  Currently accepting new clients
-                </span>
+              <div className="flex items-start gap-2.5">
+                <span className="glow-dot mt-1.5" />
+                <div>
+                  <div className="text-sm font-medium" style={{ color: "#F4EBE0" }}>Currently accepting new clients</div>
+                  <div className="text-sm mt-0.5" style={{ color: "#A89684" }}>Available for projects now.</div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Form */}
           <div className="lg:col-span-3">
-            <div
-              className="rounded-2xl p-8"
-              style={{
-                background: "#22243A",
-                border: "1px solid rgba(108,99,255,0.18)",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
-              }}
-            >
+            <div className="ctline p-8">
               {showSuccess ? (
                 <div className="flex flex-col items-center justify-center gap-5 py-10 text-center">
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{ background: "rgba(108,99,255,0.1)" }}
+                    style={{ background: "rgba(95,208,197,0.12)" }}
                   >
-                    <CheckCircle2 size={32} style={{ color: "#6C63FF" }} />
+                    <CheckCircle2 size={32} style={{ color: "#5FD0C5" }} />
                   </div>
-                  <h3 className="text-xl font-bold" style={{ color: "#EEEEFF" }}>
+                  <h3 className="text-xl font-semibold" style={{ color: "#F4EBE0" }}>
                     Message Received!
                   </h3>
-                  <p className="text-sm max-w-xs" style={{ color: "#8888AA" }}>
+                  <p className="text-sm max-w-xs" style={{ color: "#A89684" }}>
                     Thank you for reaching out. We&apos;ll review your project details
                     and get back to you within 24 hours.
                   </p>
@@ -184,8 +136,8 @@ export default function Contact() {
                   className="flex flex-col gap-5"
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <MessageSquare size={18} style={{ color: "#6C63FF" }} />
-                    <h3 className="font-bold text-lg" style={{ color: "#EEEEFF" }}>
+                    <MessageSquare size={18} style={{ color: "#E29A5C" }} />
+                    <h3 className="font-semibold text-lg" style={{ color: "#F4EBE0" }}>
                       Project Inquiry
                     </h3>
                   </div>
@@ -196,7 +148,7 @@ export default function Contact() {
                       { name: "company", label: "Company",      placeholder: "Acme Corp (optional)",  req: false },
                     ].map((f) => (
                       <div key={f.name} className="flex flex-col gap-1.5">
-                        <label className="text-xs font-semibold" style={{ color: "#8888AA" }}>
+                        <label className="text-xs font-semibold" style={{ color: "#A89684" }}>
                           {f.label}
                         </label>
                         <input
@@ -204,7 +156,7 @@ export default function Contact() {
                           name={f.name}
                           required={f.req}
                           placeholder={f.placeholder}
-                          className="w-full px-4 py-2.5 rounded-xl text-sm"
+                          className="w-full px-4 py-2.5 rounded text-sm"
                           style={inputStyle}
                         />
                       </div>
@@ -212,7 +164,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-semibold" style={{ color: "#8888AA" }}>
+                    <label className="text-xs font-semibold" style={{ color: "#A89684" }}>
                       Email Address
                     </label>
                     <input
@@ -220,20 +172,20 @@ export default function Contact() {
                       name="email"
                       required
                       placeholder="jane@acmecorp.com"
-                      className="w-full px-4 py-2.5 rounded-xl text-sm"
+                      className="w-full px-4 py-2.5 rounded text-sm"
                       style={inputStyle}
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold" style={{ color: "#8888AA" }}>
+                      <label className="text-xs font-semibold" style={{ color: "#A89684" }}>
                         Service Needed
                       </label>
                       <select
                         name="service"
                         defaultValue=""
-                        className="w-full px-4 py-2.5 rounded-xl text-sm"
+                        className="w-full px-4 py-2.5 rounded text-sm"
                         style={inputStyle}
                       >
                         <option value="">Select a service…</option>
@@ -243,13 +195,13 @@ export default function Contact() {
                       </select>
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-xs font-semibold" style={{ color: "#8888AA" }}>
+                      <label className="text-xs font-semibold" style={{ color: "#A89684" }}>
                         Estimated Budget
                       </label>
                       <select
                         name="budget"
                         defaultValue=""
-                        className="w-full px-4 py-2.5 rounded-xl text-sm"
+                        className="w-full px-4 py-2.5 rounded text-sm"
                         style={inputStyle}
                       >
                         <option value="">Select range…</option>
@@ -263,7 +215,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-semibold" style={{ color: "#8888AA" }}>
+                    <label className="text-xs font-semibold" style={{ color: "#A89684" }}>
                       Tell Us About Your Project
                     </label>
                     <textarea
@@ -271,14 +223,14 @@ export default function Contact() {
                       required
                       rows={5}
                       placeholder="Describe your project, goals, timeline, and any specific technical requirements…"
-                      className="w-full px-4 py-2.5 rounded-xl text-sm resize-none"
+                      className="w-full px-4 py-2.5 rounded text-sm resize-none"
                       style={inputStyle}
                     />
                   </div>
 
                   {state.error && !pending ? (
                     <div
-                      className="flex items-start gap-2 rounded-xl px-4 py-3 text-sm"
+                      className="flex items-start gap-2 rounded px-4 py-3 text-sm"
                       style={{
                         background: "rgba(239,68,68,0.08)",
                         border: "1px solid rgba(239,68,68,0.3)",

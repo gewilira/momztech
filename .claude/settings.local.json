@@ -7,7 +7,13 @@
       "Bash(node *)",
       "Read(//tmp/**)",
       "Bash(pkill -f \"next dev\")",
-      "Read(//private/tmp/**)"
+      "Read(//private/tmp/**)",
+      "Skill(run)",
+      "Bash(command -v chromium-cli)",
+      "Bash(npx --no-install chromium-cli --help)",
+      "Bash(npm ls *)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(git rm *)"
     ]
   }
 }

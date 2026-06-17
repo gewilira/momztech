@@ -11,7 +11,7 @@ const projects = [
       "A multi-tenant HR platform handling employee lifecycle, payroll integration, and real-time analytics dashboards for 10,000+ users across 40+ companies.",
     tech: ["Java", "Spring Boot", "React", "PostgreSQL", "Docker", "AWS"],
     gradient: "linear-gradient(135deg, #EDE9FE 0%, #E0F2FE 100%)",
-    accent: "#6C63FF",
+    accent: "#8B5CF6",
     emoji: "🏢",
   },
   {
@@ -31,7 +31,7 @@ const projects = [
       "Scalable multi-vendor marketplace API with OAuth2, real-time inventory sync, Stripe integration, and a merchant analytics portal serving 500K+ daily transactions.",
     tech: ["Java", "Spring Security", "MySQL", "Redis", "Kafka", "Kubernetes"],
     gradient: "linear-gradient(135deg, #E0F2FE 0%, #DCFCE7 100%)",
-    accent: "#00B4D8",
+    accent: "#F2557A",
     emoji: "🛒",
   },
   {
@@ -68,16 +68,16 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="work" className="py-28" style={{ background: "#1D1E30" }}>
+    <section id="work" className="py-28" style={{ background: "#231A3D" }}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="section-label">Our Work</span>
-          <h2 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight" style={{ color: "#EEEEFF" }}>
+          <h2 className="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight" style={{ color: "#F6F2FF" }}>
             Projects That{" "}
             <span className="text-gradient">Deliver Results</span>
           </h2>
-          <p className="mt-4 text-base max-w-xl mx-auto leading-relaxed" style={{ color: "#8888AA" }}>
+          <p className="mt-4 text-base max-w-xl mx-auto leading-relaxed" style={{ color: "#B0A3D4" }}>
             A snapshot of real-world systems we&apos;ve designed, built, and shipped —
             from startups to enterprise clients.
           </p>
@@ -107,10 +107,10 @@ export default function Projects() {
 
               {/* Body */}
               <div className="p-5 flex flex-col flex-1 gap-3">
-                <h3 className="font-bold text-base leading-snug" style={{ color: "#EEEEFF" }}>
+                <h3 className="font-bold text-base leading-snug" style={{ color: "#F6F2FF" }}>
                   {p.title}
                 </h3>
-                <p className="text-sm leading-relaxed flex-1" style={{ color: "#8888AA" }}>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "#B0A3D4" }}>
                   {p.description}
                 </p>
 
@@ -121,9 +121,9 @@ export default function Projects() {
                       key={t}
                       className="px-2.5 py-0.5 rounded text-xs font-medium"
                       style={{
-                        background: "#1D1E30",
-                        color: "#8888AA",
-                        border: "1px solid rgba(108,99,255,0.12)",
+                        background: "#231A3D",
+                        color: "#B0A3D4",
+                        border: "1px solid rgba(139,92,246,0.12)",
                       }}
                     >
                       {t}
@@ -136,18 +136,18 @@ export default function Projects() {
                   <a
                     href="#"
                     className="flex items-center gap-1.5 text-xs font-medium transition-colors"
-                    style={{ color: "#5A5A7A" }}
+                    style={{ color: "#756893" }}
                     onMouseOver={(e) => (e.currentTarget.style.color = p.accent)}
-                    onMouseOut={(e) => (e.currentTarget.style.color = "#5A5A7A")}
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#756893")}
                   >
                     <GithubIcon size={13} /> Case Study
                   </a>
                   <a
                     href="#"
                     className="flex items-center gap-1.5 text-xs font-medium transition-colors"
-                    style={{ color: "#5A5A7A" }}
+                    style={{ color: "#756893" }}
                     onMouseOver={(e) => (e.currentTarget.style.color = p.accent)}
-                    onMouseOut={(e) => (e.currentTarget.style.color = "#5A5A7A")}
+                    onMouseOut={(e) => (e.currentTarget.style.color = "#756893")}
                   >
                     <ExternalLink size={13} /> Live Demo
                   </a>
@@ -159,7 +159,7 @@ export default function Projects() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-14">
-          <p className="text-sm mb-4" style={{ color: "#5A5A7A" }}>
+          <p className="text-sm mb-4" style={{ color: "#756893" }}>
             Have a project in mind? We&apos;d love to discuss it.
           </p>
           <a href="#contact" className="btn-primary">

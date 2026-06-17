@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Menu, X, Zap } from "lucide-react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const links = [
   { label: "Services", href: "#services" },
@@ -10,37 +11,21 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [open, setOpen]         = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const [open, setOpen] = useState(false);
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50"
       style={{
-        background: scrolled ? "rgba(24,25,38,0.9)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(108,99,255,0.15)" : "none",
-        boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.25)" : "none",
+        background: "rgba(22,18,15,0.7)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid #3A2E24",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2.5">
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: "linear-gradient(135deg,#6C63FF,#00B4D8)" }}
-          >
-            <Zap size={16} color="white" fill="white" />
-          </div>
-          <span className="font-bold text-lg tracking-tight" style={{ color: "#1A1A3E" }}>
-            Momz<span style={{ color: "#6C63FF" }}>Tech</span>
-          </span>
+        <a href="#">
+          <Logo size={26} />
         </a>
 
         {/* Desktop links */}
@@ -50,7 +35,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn-primary text-sm py-2.5 px-5">
+          <a href="#contact" className="btn-primary text-sm py-2.5 px-4">
             Get a Quote
           </a>
         </div>
@@ -58,7 +43,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           className="md:hidden p-2 rounded-lg"
-          style={{ color: "#EEEEFF" }}
+          style={{ color: "#F4EBE0" }}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -71,8 +56,8 @@ export default function Navbar() {
         <div
           className="md:hidden px-6 pb-6 pt-2 flex flex-col gap-5"
           style={{
-            background: "rgba(24,25,38,0.98)",
-            borderBottom: "1px solid rgba(108,99,255,0.15)",
+            background: "rgba(22,18,15,0.98)",
+            borderBottom: "1px solid #3A2E24",
           }}
         >
           {links.map((l) => (
