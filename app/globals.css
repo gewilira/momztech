@@ -44,7 +44,7 @@ body::before {
     linear-gradient(#3A2E24 1px, transparent 1px),
     linear-gradient(90deg, #3A2E24 1px, transparent 1px);
   background-size: 64px 64px;
-  opacity: 0.18;
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
@@ -74,11 +74,20 @@ body::before {
   50%  { top: 84%; }
   100% { top: 6%; }
 }
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%       { opacity: 0.9;  transform: scale(1.7); }
+}
+@keyframes trace-flow {
+  to { stroke-dashoffset: -240; }
+}
 
-.animate-fadeInUp  { animation: fadeInUp 0.7s ease-out both; }
-.animate-fadeIn    { animation: fadeIn   0.8s ease-out both; }
-.animate-pulse-ring{ animation: pulse-ring 2.4s infinite; }
-.animate-scan      { animation: scan 4.5s linear infinite; }
+.animate-fadeInUp   { animation: fadeInUp 0.7s ease-out both; }
+.animate-fadeIn     { animation: fadeIn   0.8s ease-out both; }
+.animate-pulse-ring { animation: pulse-ring 2.4s infinite; }
+.animate-scan       { animation: scan 4.5s linear infinite; }
+.animate-node-pulse { animation: node-pulse 3.2s ease-in-out infinite; }
+.animate-trace-flow { animation: trace-flow 6s linear infinite; }
 
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }

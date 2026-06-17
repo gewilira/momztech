@@ -13,7 +13,11 @@
       "Bash(npx --no-install chromium-cli --help)",
       "Bash(npm ls *)",
       "Bash(npx --no-install playwright --version)",
-      "Bash(git rm *)"
+      "Bash(git rm *)",
+      "Bash(timeout 30 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 1; done')",
+      "Bash(curl -sf http://localhost:3000)",
+      "Bash(break)",
+      "Bash(curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\\\\n\")"
     ]
   }
 }

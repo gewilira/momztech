@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Fraunces, JetBrains_Mono } from "next/font/google";
+import CircuitBackground from "@/components/CircuitBackground";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,7 +54,10 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${fraunces.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <CircuitBackground />
+        {children}
+      </body>
     </html>
   );
 }

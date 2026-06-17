@@ -1,13 +1,69 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { ArrowRight, Play } from "lucide-react";
 import { LogoMark } from "@/components/Logo";
+
+const lineDefs = [
+  { prefix: "We ", emphasis: "build." },
+  { prefix: "We innovate.", emphasis: "" },
+  { prefix: "We deliver.", emphasis: "" },
+];
+const lineLengths = lineDefs.map((d) => d.prefix.length + d.emphasis.length);
+
+function useTypewriter(lengths: number[], speed = 55, lineGap = 350) {
+  const [lineIdx, setLineIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+
+  useEffect(() => {
+    if (lineIdx >= lengths.length) return;
+    const total = lengths[lineIdx];
+    const delay = charIdx < total ? speed : lineGap;
+    const t = setTimeout(() => {
+      if (charIdx < total) {
+        setCharIdx((c) => c + 1);
+      } else {
+        setLineIdx((i) => i + 1);
+        setCharIdx(0);
+      }
+    }, delay);
+    return () => clearTimeout(t);
+  }, [lineIdx, charIdx, lengths, speed, lineGap]);
+
+  return { lineIdx, charIdx };
+}
+
+function Cursor() {
+  return (
+    <span
+      className="inline-block w-0.5 h-[0.85em] ml-0.5 align-middle rounded"
+      style={{ background: "#E29A5C", animation: "dot-blink 1s step-end infinite" }}
+    />
+  );
+}
+
+function TypedLine({ def, typed, showCursor }: { def: { prefix: string; emphasis: string }; typed: number; showCursor: boolean }) {
+  const prefixShown = def.prefix.slice(0, typed);
+  const emphasisShown = typed > def.prefix.length ? def.emphasis.slice(0, typed - def.prefix.length) : "";
+  return (
+    <>
+      {prefixShown}
+      {emphasisShown && <span className="font-serif-italic" style={{ color: "#E29A5C" }}>{emphasisShown}</span>}
+      {showCursor && <Cursor />}
+    </>
+  );
+}
 
 const techs = ["Java", "Spring Boot", "React", "Next.js", "AWS", "Docker", "AI / LLM", "PostgreSQL"];
 
 export default function Hero() {
+  const { lineIdx, charIdx } = useTypewriter(lineLengths);
+  const done = lineIdx >= lineDefs.length;
+
   return (
-    <header id="top" className="relative pt-44 pb-14" style={{ background: "#16120F" }}>
+    <header id="top" className="relative pt-[104px] pb-14">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-14 items-start">
 
           {/* ── Left column ── */}
           <div className="animate-fadeInUp">
@@ -17,11 +73,18 @@ export default function Hero() {
 
             <h1
               className="mt-4 font-semibold tracking-tight"
-              style={{ fontSize: "clamp(46px,7vw,72px)", lineHeight: 0.98, letterSpacing: "-0.03em", color: "#F4EBE0" }}
+              style={{ fontSize: "clamp(46px,7vw,72px)", lineHeight: 1.08, letterSpacing: "-0.03em", color: "#F4EBE0" }}
             >
-              We <span className="font-serif-italic" style={{ color: "#E29A5C" }}>build.</span>
-              <br />We innovate.
-              <br />We deliver.
+              {lineDefs.map((def, i) => (
+                <span key={i}>
+                  {i > 0 && <br />}
+                  {i < lineIdx || done ? (
+                    <TypedLine def={def} typed={lineLengths[i]} showCursor={done && i === lineDefs.length - 1} />
+                  ) : i === lineIdx ? (
+                    <TypedLine def={def} typed={charIdx} showCursor />
+                  ) : null}
+                </span>
+              ))}
             </h1>
 
             <p
@@ -58,7 +121,7 @@ export default function Hero() {
           </div>
 
           {/* ── Right column — status panel ── */}
-          <div className="panel animate-fadeIn delay-200" aria-label="MomzTech status panel">
+          <div className="panel mt-8 animate-fadeIn delay-200" aria-label="MomzTech status panel">
             <div className="flex items-center justify-between mb-[18px]">
               <span className="mono-label">SYS&#47;&#47;MOMZTECH</span>
               <div className="flex gap-1.5">
