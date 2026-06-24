@@ -1,4 +1,4 @@
-import { Heart, Mail, ArrowUp } from "lucide-react";
+import { Mail, ArrowUp } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/Icons";
 import Logo from "@/components/Logo";
 
@@ -14,9 +14,9 @@ export default function Footer() {
 
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#A89684" }}>
               IT consultancy delivering custom web applications, AI solutions, and
-              cloud infrastructure for businesses that want to move fast without
-              breaking things. Built by a mom, a software engineer, and the family
-              who inspires it all.
+              cloud infrastructure for companies that want to move fast without
+              breaking things. A senior engineering team you can trust from first
+              line of code to production scale.
             </p>
             <div className="flex items-center gap-3 mt-1">
               <a
@@ -70,8 +70,10 @@ export default function Footer() {
             <h5 className="mono-label mb-3.5">Company</h5>
             <ul className="flex flex-col gap-2.5 text-sm">
               {[
-                { label: "About",    href: "#why-us" },
                 { label: "Services", href: "#services" },
+                { label: "Process",  href: "#process" },
+                { label: "Why Us",   href: "#why-us" },
+                { label: "Care Plans", href: "#care" },
                 { label: "Contact",  href: "#contact" },
               ].map((l) => (
                 <li key={l.label}>
@@ -89,9 +91,8 @@ export default function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6"
           style={{ borderTop: "1px solid #3A2E24" }}
         >
-          <p className="text-sm flex items-center gap-1.5" style={{ color: "#A89684" }}>
-            © {new Date().getFullYear()} MomzTech · Built with{" "}
-            <Heart size={12} style={{ color: "#E29A5C" }} fill="#E29A5C" /> and lots of coffee
+          <p className="text-sm" style={{ color: "#A89684" }}>
+            © {new Date().getFullYear()} MomzTech · IT Consultancy &amp; Software Solutions
           </p>
           <a
             href="#top"

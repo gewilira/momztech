@@ -4,6 +4,7 @@ import { useActionState, useRef, useState } from "react";
 import { AlertCircle, Send, Mail, CheckCircle2, Clock, Globe, Loader2, MessageSquare } from "lucide-react";
 import { LinkedinIcon } from "@/components/Icons";
 import { submitInquiry, type ContactState } from "@/app/actions/contact";
+import Reveal from "@/components/Reveal";
 
 const services = [
   "Web Application Development",
@@ -28,10 +29,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-[88px]" style={{ background: "#16120F" }}>
+    <section id="contact" className="py-[100px]" style={{ background: "#16120F" }}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="max-w-2xl mb-12">
+        <Reveal className="max-w-2xl mb-12">
           <p className="mono-label">Contact us</p>
           <h2 className="mt-3.5 font-semibold tracking-tight" style={{ fontSize: "clamp(30px,4.4vw,52px)", lineHeight: 1.05, letterSpacing: "-0.025em", color: "#F4EBE0" }}>
             Let&apos;s build something{" "}
@@ -41,7 +42,7 @@ export default function Contact() {
             Tell us about your project. We respond within 24 hours with an honest
             assessment and next steps — no commitment required.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
 

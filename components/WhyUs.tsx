@@ -1,3 +1,6 @@
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
+
 const values = [
   {
     title: "Senior-Level Quality",
@@ -27,27 +30,24 @@ const values = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="py-[88px]" style={{ background: "#16120F" }}>
+    <section id="why-us" className="py-[100px]" style={{ background: "#16120F" }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="max-w-xl mb-12">
-          <p className="mono-label">Why MomzTech</p>
-          <h2 className="mt-3.5 font-semibold tracking-tight" style={{ fontSize: "clamp(28px,3.6vw,42px)", lineHeight: 1.08, letterSpacing: "-0.02em", color: "#F4EBE0" }}>
-            The difference is in{" "}
-            <span className="font-serif-italic" style={{ color: "#E29A5C" }}>how we work.</span>
-          </h2>
-          <p className="mt-4 text-base max-w-xl leading-relaxed" style={{ color: "#A89684" }}>
-            There are many dev shops. What sets us apart is over 30 years of
-            combined hands-on experience — and the discipline that comes with it.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="Why MomzTech"
+          title="The difference is in"
+          accent="how we work."
+          intro="Plenty of teams can write code. What sets us apart is 30+ years of combined hands-on experience — and the engineering discipline that serious, at-scale work demands."
+        />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {values.map((v) => (
-            <div key={v.title} className="why-card p-[26px]">
-              <span className="mono-label" style={{ color: "#5FD0C5" }}>[ &#10003; ]</span>
-              <h4 className="text-base font-semibold mt-3 mb-2" style={{ color: "#F4EBE0" }}>{v.title}</h4>
-              <p className="text-sm leading-relaxed" style={{ color: "#A89684" }}>{v.body}</p>
-            </div>
+          {values.map((v, i) => (
+            <Reveal key={v.title} delay={(i % 3) * 90}>
+              <div className="why-card h-full p-[26px]">
+                <span className="mono-label" style={{ color: "#5FD0C5" }}>[ &#10003; ]</span>
+                <h4 className="text-base font-semibold mt-3 mb-2" style={{ color: "#F4EBE0" }}>{v.title}</h4>
+                <p className="text-sm leading-relaxed" style={{ color: "#A89684" }}>{v.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>
