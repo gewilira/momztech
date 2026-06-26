@@ -39,7 +39,7 @@ export async function submitInquiry(
       auth: { user: required("SMTP_USER"), pass: required("SMTP_PASS") },
     });
 
-    const to = process.env.CONTACT_TO ?? "gewilira.morales@momztech.com";
+    const to = process.env.CONTACT_TO ?? "info@momztech.com";
     const from = process.env.SMTP_FROM ?? process.env.SMTP_USER!;
 
     const text = [
@@ -68,7 +68,7 @@ export async function submitInquiry(
     console.error("[contact] sendMail failed", err);
     return {
       ok: false,
-      error: "Could not send your message right now. Please email us directly at gewilira.morales@momztech.com.",
+      error: "Could not send your message right now. Please email us directly at info@momztech.com.",
     };
   }
 }

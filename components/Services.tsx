@@ -320,7 +320,7 @@ const modules: ServiceModule[] = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-[88px]" style={{ background: "#16120F" }}>
+    <section id="services" className="py-[88px]" style={{ background: "#F2F8FD" }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
           eyebrow="What we do"
@@ -338,18 +338,39 @@ export default function Services() {
                 {/* Module header */}
                 <Reveal
                   className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6 pb-5"
-                  style={{ borderBottom: "1px solid #3A2E24" }}
+                  style={{
+                    borderBottom: "2px solid",
+                    borderImageSource: "linear-gradient(90deg, #1E73C8, #16B6C4 26%, #D3E1EC 62%, rgba(211,225,236,0))",
+                    borderImageSlice: 1,
+                  }}
                 >
                   <div className="flex items-start gap-4">
-                    <Icon size={26} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
+                    {/* tech badge */}
+                    <div
+                      className="relative flex items-center justify-center shrink-0"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "13px",
+                        background: "linear-gradient(145deg, rgba(30,115,200,0.12), rgba(22,182,196,0.12))",
+                        border: "1px solid rgba(30,115,200,0.25)",
+                        boxShadow: "0 0 0 4px rgba(30,115,200,0.04)",
+                      }}
+                    >
+                      <Icon size={23} style={{ color: "#1E73C8" }} />
+                      <span
+                        className="absolute rounded-full"
+                        style={{ top: "7px", right: "7px", width: "5px", height: "5px", background: "#16B6C4", boxShadow: "0 0 6px #16B6C4" }}
+                      />
+                    </div>
                     <div>
                       <p className="mono-label">{m.label}</p>
-                      <h3 className="mt-1.5 text-2xl font-semibold tracking-tight" style={{ color: "#F4EBE0", letterSpacing: "-0.01em" }}>
+                      <h3 className="mt-1.5 text-2xl font-semibold tracking-tight" style={{ color: "#14202B", letterSpacing: "-0.01em" }}>
                         {m.title}
                       </h3>
                     </div>
                   </div>
-                  <p className="text-sm leading-relaxed max-w-sm md:text-right" style={{ color: "#A89684" }}>
+                  <p className="text-sm leading-relaxed max-w-sm md:text-right" style={{ color: "#5C6B76" }}>
                     {m.blurb}
                   </p>
                 </Reveal>
@@ -359,17 +380,17 @@ export default function Services() {
                   {m.offerings.map((o, i) => (
                     <Reveal key={o.name} delay={(i % 2) * 90}>
                       <div className="service-card h-full p-7">
-                        <h4 className="text-lg font-semibold" style={{ color: "#F4EBE0" }}>{o.name}</h4>
-                        <p className="text-sm mt-1" style={{ color: "#A89684" }}>{o.tagline}</p>
+                        <h4 className="text-lg font-semibold" style={{ color: "#14202B" }}>{o.name}</h4>
+                        <p className="text-sm mt-1" style={{ color: "#5C6B76" }}>{o.tagline}</p>
                         <div className="flex items-center gap-1.5 mt-3">
-                          <Clock size={13} style={{ color: "#5FD0C5", flexShrink: 0 }} />
-                          <span className="mono-label" style={{ color: "#5FD0C5", fontSize: "0.6875rem" }}>{o.timeline}</span>
+                          <Clock size={13} style={{ color: "#0A7681", flexShrink: 0 }} />
+                          <span className="mono-label" style={{ color: "#0A7681", fontSize: "0.6875rem" }}>{o.timeline}</span>
                         </div>
-                        <div className="h-px my-4" style={{ background: "#3A2E24" }} />
+                        <div className="h-px my-4" style={{ background: "#D3E1EC" }} />
                         <ul className="flex flex-col gap-2.5">
                           {o.includes.map((inc) => (
-                            <li key={inc} className="flex items-start gap-2.5 text-sm leading-snug" style={{ color: "#F4EBE0" }}>
-                              <Check size={15} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
+                            <li key={inc} className="flex items-start gap-2.5 text-sm leading-snug" style={{ color: "#36474F" }}>
+                              <Check size={15} style={{ color: "#2E7D46", flexShrink: 0, marginTop: "2px" }} />
                               <span>{inc}</span>
                             </li>
                           ))}
@@ -386,9 +407,9 @@ export default function Services() {
         {/* Closing note + CTA */}
         <Reveal
           className="mt-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 p-7 rounded-md"
-          style={{ background: "#1C1610", border: "1px solid #3A2E24" }}
+          style={{ background: "#FFFFFF", border: "1px solid #D3E1EC" }}
         >
-          <p className="text-sm leading-relaxed max-w-xl" style={{ color: "#A89684" }}>
+          <p className="text-sm leading-relaxed max-w-xl" style={{ color: "#5C6B76" }}>
             Timelines are typical estimates — final scope is set in a quick discovery
             call. Most projects are milestone-based, and we&apos;ll always give you an
             honest assessment before any commitment.

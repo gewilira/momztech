@@ -23,20 +23,20 @@ export default function SectionHeading({
       <p className="mono-label">{eyebrow}</p>
       <h2
         className="mt-3.5 font-semibold tracking-tight"
-        style={{ fontSize: "clamp(28px,3.8vw,44px)", lineHeight: 1.07, letterSpacing: "-0.025em", color: "#F4EBE0" }}
+        style={{ fontSize: "clamp(28px,3.8vw,44px)", lineHeight: 1.07, letterSpacing: "-0.025em", color: "#14202B" }}
       >
         {title}
         {accent && (
           <>
             {" "}
-            <span className="font-serif-italic" style={{ color: "#E29A5C" }}>{accent}</span>
+            <span className="font-serif-italic" style={{ color: "#1E73C8" }}>{accent}</span>
           </>
         )}
       </h2>
       {intro && (
         <p
           className={`mt-4 text-base leading-relaxed ${centered ? "mx-auto" : ""}`}
-          style={{ color: "#A89684", maxWidth: "38rem" }}
+          style={{ color: "#5C6B76", maxWidth: "38rem" }}
         >
           {intro}
         </p>

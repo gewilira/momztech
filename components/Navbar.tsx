@@ -27,10 +27,10 @@ export default function Navbar() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled ? "rgba(22,18,15,0.82)" : "rgba(22,18,15,0.6)",
+        background: scrolled ? "rgba(242,248,253,0.85)" : "rgba(242,248,253,0.6)",
         backdropFilter: "blur(12px)",
-        borderBottom: `1px solid ${scrolled ? "#3A2E24" : "transparent"}`,
-        boxShadow: scrolled ? "0 12px 40px -28px #000" : "none",
+        borderBottom: `1px solid ${scrolled ? "#D3E1EC" : "transparent"}`,
+        boxShadow: scrolled ? "0 12px 40px -28px rgba(20,32,43,0.25)" : "none",
       }}
     >
       <div className="max-w-6xl mx-auto px-6 h-[68px] flex items-center justify-between">
@@ -54,7 +54,7 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           className="lg:hidden p-2 rounded-lg"
-          style={{ color: "#F4EBE0" }}
+          style={{ color: "#14202B" }}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -67,8 +67,8 @@ export default function Navbar() {
         <div
           className="lg:hidden px-6 pb-6 pt-2 flex flex-col gap-5"
           style={{
-            background: "rgba(22,18,15,0.98)",
-            borderBottom: "1px solid #3A2E24",
+            background: "rgba(242,248,253,0.98)",
+            borderBottom: "1px solid #D3E1EC",
           }}
         >
           {links.map((l) => (

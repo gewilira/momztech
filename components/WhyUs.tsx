@@ -30,7 +30,7 @@ const values = [
 
 export default function WhyUs() {
   return (
-    <section id="why-us" className="py-[100px]" style={{ background: "#16120F" }}>
+    <section id="why-us" className="py-[100px]" style={{ background: "#F2F8FD" }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
           eyebrow="Why MomzTech"
@@ -43,9 +43,9 @@ export default function WhyUs() {
           {values.map((v, i) => (
             <Reveal key={v.title} delay={(i % 3) * 90}>
               <div className="why-card h-full p-[26px]">
-                <span className="mono-label" style={{ color: "#5FD0C5" }}>[ &#10003; ]</span>
-                <h4 className="text-base font-semibold mt-3 mb-2" style={{ color: "#F4EBE0" }}>{v.title}</h4>
-                <p className="text-sm leading-relaxed" style={{ color: "#A89684" }}>{v.body}</p>
+                <span className="mono-label" style={{ color: "#2E7D46" }}>[ &#10003; ]</span>
+                <h4 className="text-base font-semibold mt-3 mb-2" style={{ color: "#14202B" }}>{v.title}</h4>
+                <p className="text-sm leading-relaxed" style={{ color: "#5C6B76" }}>{v.body}</p>
               </div>
             </Reveal>
           ))}

@@ -23,27 +23,28 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#16120F",
+  themeColor: "#F2F8FD",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://momztech.com"),
-  title: "MomzTech | IT Consultancy & Software Solutions",
+  title: "MomzTech | Technology in Balance with the World",
   description:
-    "MomzTech is an IT consultancy delivering custom web applications, AI integration, cloud architecture, and enterprise software solutions.",
+    "MomzTech builds modern web, AI, and cloud software that's fast and future-ready — yet efficient, accessible, and built to last. Powerful technology in balance with nature and people.",
   keywords: [
-    "IT Consultancy",
+    "Responsible Technology",
+    "Sustainable Software",
     "Web Application Development",
     "AI Consultation",
     "Cloud Architecture",
-    "Enterprise Software",
+    "Accessible Software",
     "Software Solutions",
     "momztech",
   ],
   openGraph: {
-    title: "MomzTech | IT Consultancy & Software Solutions",
+    title: "MomzTech | Technology in Balance with the World",
     description:
-      "We build. We innovate. We deliver. Custom software solutions tailored to your business needs.",
+      "Powerful technology that respects the people, and the world, it serves — fast and future-ready, yet efficient, accessible, and built to last.",
     siteName: "MomzTech",
     type: "website",
   },
