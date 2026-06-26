@@ -48,7 +48,7 @@ export default function CarePlans() {
     <section
       id="care"
       className="py-[100px]"
-      style={{ background: "#1A130E", borderTop: "1px solid #3A2E24", borderBottom: "1px solid #3A2E24" }}
+      style={{ background: "#EDF4FA", borderTop: "1px solid #D3E1EC", borderBottom: "1px solid #D3E1EC" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
@@ -64,20 +64,20 @@ export default function CarePlans() {
             <Reveal key={p.tier} delay={(i % 3) * 90}>
               <div
                 className="service-card h-full p-7 flex flex-col"
-                style={p.featured ? { borderColor: "#E29A5C" } : undefined}
+                style={p.featured ? { borderColor: "#1E73C8" } : undefined}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <p className="mono-label" style={{ color: p.featured ? "#5FD0C5" : "#E29A5C" }}>{p.tier}</p>
+                  <p className="mono-label" style={{ color: p.featured ? "#0A7681" : "#1E73C8" }}>{p.tier}</p>
                   {p.featured && (
-                    <span className="mono-label" style={{ color: "#5FD0C5", fontSize: "0.625rem" }}>Most popular</span>
+                    <span className="mono-label" style={{ color: "#0A7681", fontSize: "0.625rem" }}>Most popular</span>
                   )}
                 </div>
-                <p className="text-sm mt-3" style={{ color: "#A89684" }}>{p.tagline}</p>
-                <div className="h-px my-5" style={{ background: "#3A2E24" }} />
+                <p className="text-sm mt-3" style={{ color: "#5C6B76" }}>{p.tagline}</p>
+                <div className="h-px my-5" style={{ background: "#D3E1EC" }} />
                 <ul className="flex flex-col gap-3 flex-1">
                   {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm leading-snug" style={{ color: "#F4EBE0" }}>
-                      <Check size={15} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
+                    <li key={f} className="flex items-start gap-2.5 text-sm leading-snug" style={{ color: "#36474F" }}>
+                      <Check size={15} style={{ color: "#2E7D46", flexShrink: 0, marginTop: "2px" }} />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -85,7 +85,7 @@ export default function CarePlans() {
                 <a
                   href="#contact"
                   className="flex items-center gap-2 text-sm font-semibold mt-7"
-                  style={{ color: "#E29A5C" }}
+                  style={{ color: "#1E73C8" }}
                 >
                   Ask about this plan <ArrowRight size={14} />
                 </a>
@@ -94,7 +94,7 @@ export default function CarePlans() {
           ))}
         </div>
 
-        <p className="mt-8 text-sm leading-relaxed max-w-2xl" style={{ color: "#A89684" }}>
+        <p className="mt-8 text-sm leading-relaxed max-w-2xl" style={{ color: "#5C6B76" }}>
           Hosting and third-party fees (cloud, payment gateways, app store accounts)
           are billed at cost. Every plan is month-to-month — scale up or pause anytime.
         </p>

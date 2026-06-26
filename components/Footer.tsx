@@ -3,7 +3,7 @@ import Logo from "@/components/Logo";
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: "1px solid #3A2E24", background: "#1C1610" }}>
+    <footer style={{ borderTop: "1px solid #D3E1EC", background: "#EDF4FA" }}>
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-8 mb-9">
 
@@ -11,19 +11,19 @@ export default function Footer() {
           <div className="flex flex-col gap-3.5">
             <Logo size={24} />
 
-            <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#A89684" }}>
+            <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#5C6B76" }}>
               IT consultancy delivering custom web applications, AI solutions, and
               cloud infrastructure for companies that want to move fast without
               breaking things. A senior engineering team you can trust from first
               line of code to production scale.
             </p>
             <a
-              href="mailto:gewilira.morales@momztech.com"
+              href="mailto:info@momztech.com"
               className="inline-flex items-center gap-2.5 mt-1 px-3 h-9 transition-colors"
-              style={{ border: "1px solid #3A2E24", color: "#F4EBE0" }}
+              style={{ border: "1px solid #D3E1EC", color: "#14202B" }}
             >
-              <Mail size={15} style={{ color: "#E29A5C" }} />
-              <span className="text-sm">gewilira.morales@momztech.com</span>
+              <Mail size={15} style={{ color: "#1E73C8" }} />
+              <span className="text-sm">info@momztech.com</span>
             </a>
           </div>
 
@@ -72,18 +72,18 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6"
-          style={{ borderTop: "1px solid #3A2E24" }}
+          style={{ borderTop: "1px solid #D3E1EC" }}
         >
-          <p className="text-sm" style={{ color: "#A89684" }}>
+          <p className="text-sm" style={{ color: "#5C6B76" }}>
             © {new Date().getFullYear()} MomzTech · IT Consultancy &amp; Software Solutions
           </p>
           <a
             href="#top"
             className="w-9 h-9 rounded flex items-center justify-center"
-            style={{ border: "1px solid #3A2E24" }}
+            style={{ border: "1px solid #D3E1EC" }}
             aria-label="Back to top"
           >
-            <ArrowUp size={16} style={{ color: "#E29A5C" }} />
+            <ArrowUp size={16} style={{ color: "#1E73C8" }} />
           </a>
         </div>
       </div>
