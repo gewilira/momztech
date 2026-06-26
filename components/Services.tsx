@@ -1,37 +1,320 @@
-import { Globe, Brain, Cloud, Server, ArrowRight } from "lucide-react";
+import { Globe, Brain, Cloud, Server, ShieldCheck, Network, Check, Clock, ArrowRight } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
 
-const services = [
+type Offering = {
+  name: string;
+  tagline: string;
+  timeline: string;
+  includes: string[];
+};
+
+type ServiceModule = {
+  icon: typeof Globe;
+  label: string;
+  title: string;
+  blurb: string;
+  offerings: Offering[];
+};
+
+const modules: ServiceModule[] = [
   {
     icon: Globe,
-    module: "MODULE 01 · WEB",
+    label: "MODULE 01 · WEB",
     title: "Web Application Development",
-    description:
-      "End-to-end custom web applications built for performance and scale. From complex SaaS platforms to internal business tools — we design, develop, and deploy.",
-    highlights: ["React & Next.js", "Java / Spring Boot", "REST & GraphQL", "Accessible UI"],
+    blurb: "From a landing page to a full custom web app — designed, built, and deployed.",
+    offerings: [
+      {
+        name: "Landing Page",
+        tagline: "One-pager to launch fast",
+        timeline: "3–7 days",
+        includes: [
+          "Single responsive page (mobile + desktop)",
+          "Up to 5 sections (hero, about, services, contact)",
+          "Contact form with email forwarding",
+          "WhatsApp click-to-chat button",
+          "Basic SEO (meta tags, title, favicon)",
+          "Google Analytics setup",
+          "1 revision round + deployment",
+        ],
+      },
+      {
+        name: "Business Website",
+        tagline: "5–8 pages, editable by you",
+        timeline: "1–3 weeks",
+        includes: [
+          "Custom multi-page design",
+          "CMS so you can edit content yourself",
+          "Contact + inquiry forms",
+          "Social links + Google Maps embed",
+          "On-page SEO + SSL setup",
+          "2 revision rounds",
+          "30 days post-launch bug support",
+        ],
+      },
+      {
+        name: "Custom Web App / MVP",
+        tagline: "Validate your idea in the market",
+        timeline: "4–10 weeks",
+        includes: [
+          "Discovery & scoping session",
+          "UI/UX wireframes + design",
+          "React / Next.js frontend + backend",
+          "User auth (login, signup, roles)",
+          "Admin dashboard + database design",
+          "Up to 3 integrations (payments, email)",
+          "API docs + deployment + 30 days support",
+        ],
+      },
+      {
+        name: "E-Commerce Store",
+        tagline: "Shopify / WooCommerce",
+        timeline: "2–4 weeks",
+        includes: [
+          "Store setup + theme customization",
+          "Up to 30 products uploaded",
+          "Payment gateway integration",
+          "Shipping + tax configuration",
+          "Order & inventory management",
+          "Customer accounts + basic SEO",
+          "Handover training session",
+        ],
+      },
+    ],
   },
   {
     icon: Brain,
-    module: "MODULE 02 · AI",
+    label: "MODULE 02 · AI",
     title: "AI Consultation & Integration",
-    description:
-      "Leverage the power of AI in your business. We advise on AI strategy, integrate LLMs, and build intelligent automation pipelines tailored to your workflows.",
-    highlights: ["LLM Integration", "AI Product Strategy", "RAG & Vector Search", "Workflow Automation"],
+    blurb: "Practical AI that plugs into your workflows.",
+    offerings: [
+      {
+        name: "AI Chatbot",
+        tagline: "Website or WhatsApp assistant",
+        timeline: "1–3 weeks",
+        includes: [
+          "Custom chatbot trained on your content/FAQs",
+          "Website or WhatsApp deployment",
+          "Lead capture built in",
+          "Handoff-to-human option",
+          "Conversation analytics dashboard",
+        ],
+      },
+      {
+        name: "AI Voice Agent",
+        tagline: "Automated inbound / outbound calls",
+        timeline: "3–6 weeks",
+        includes: [
+          "Inbound/outbound calling (Vapi / Retell)",
+          "Custom voice + conversation script",
+          "CRM / backend integration",
+          "Call logging + transcripts",
+          "Testing & tuning rounds",
+        ],
+      },
+      {
+        name: "AI Strategy & Integration",
+        tagline: "LLM, RAG & workflow automation",
+        timeline: "Scoped per project",
+        includes: [
+          "AI opportunity assessment",
+          "LLM integration into existing systems",
+          "RAG / vector search setup",
+          "Workflow automation pipelines",
+          "Prompt engineering + evaluation",
+        ],
+      },
+    ],
   },
   {
     icon: Cloud,
-    module: "MODULE 03 · CLOUD",
+    label: "MODULE 03 · CLOUD",
     title: "Cloud Architecture & DevOps",
-    description:
-      "Design and manage cloud-native infrastructure that is secure, cost-efficient, and resilient. CI/CD pipelines, container orchestration, and monitoring included.",
-    highlights: ["AWS & GCP", "Docker & Kubernetes", "CI/CD Pipelines", "Infrastructure as Code"],
+    blurb: "Secure, cost-efficient infrastructure with CI/CD and monitoring.",
+    offerings: [
+      {
+        name: "Deployment & DevOps Setup",
+        tagline: "Ship reliably from day one",
+        timeline: "3–10 days",
+        includes: [
+          "Cloud environment (AWS / Vercel / Railway)",
+          "CI/CD pipeline",
+          "Domain + DNS configuration",
+          "SSL / HTTPS",
+          "Database hosting setup",
+          "Secrets & environment management",
+          "Basic uptime monitoring",
+        ],
+      },
+      {
+        name: "Cloud Architecture & Scaling",
+        tagline: "Grow from 100 to 1M users",
+        timeline: "Scoped per project",
+        includes: [
+          "Infrastructure-as-Code (Terraform)",
+          "Docker & container orchestration",
+          "Auto-scaling + load balancing",
+          "Cost optimization review",
+          "Monitoring + alerting dashboards",
+        ],
+      },
+    ],
   },
   {
     icon: Server,
-    module: "MODULE 04 · ENTERPRISE",
-    title: "Enterprise Software & APIs",
-    description:
-      "Robust backend systems and API ecosystems that power your business at scale. Microservices architecture, legacy modernization, and third-party integrations.",
-    highlights: ["Microservices", "Spring Boot / Hibernate", "Database Optimization", "System Integration"],
+    label: "MODULE 04 · ENTERPRISE",
+    title: "Enterprise Software, Mobile & APIs",
+    blurb: "Backends, cross-platform apps, and platforms at scale.",
+    offerings: [
+      {
+        name: "REST API & Backend",
+        tagline: "The engine behind your product",
+        timeline: "2–5 weeks",
+        includes: [
+          "API design (REST / OpenAPI spec)",
+          "Database schema design",
+          "CRUD endpoints + validation",
+          "Auth + authorization (JWT)",
+          "Error handling + rate limiting",
+          "Swagger API documentation",
+          "Cloud deployment",
+        ],
+      },
+      {
+        name: "Mobile App (Cross-platform)",
+        tagline: "iOS + Android, one codebase",
+        timeline: "6–10 weeks (MVP)",
+        includes: [
+          "Flutter / React Native — iOS + Android",
+          "6–10 core screens",
+          "User authentication",
+          "Push notifications",
+          "1 payment gateway + admin panel",
+          "App Store + Play Store submission",
+          "30 days post-launch support",
+        ],
+      },
+      {
+        name: "SaaS / Enterprise Platform",
+        tagline: "Microservices & integrations",
+        timeline: "3–6 months",
+        includes: [
+          "Multi-tenant architecture",
+          "Microservices / modular monolith",
+          "Role-based access + billing",
+          "Third-party + legacy integration",
+          "Automated tests + CI/CD",
+          "Documentation + handover",
+        ],
+      },
+      {
+        name: "UI/UX Design",
+        tagline: "Add-on · Figma to dev-ready handoff",
+        timeline: "1–3 weeks",
+        includes: [
+          "User flow mapping + wireframes",
+          "High-fidelity mockups (Figma)",
+          "Clickable prototype",
+          "Design system (colours, fonts, components)",
+          "Handoff-ready developer assets",
+          "2 revision rounds",
+        ],
+      },
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    label: "MODULE 05 · SECURITY",
+    title: "Cybersecurity & Compliance",
+    blurb: "Find the gaps before attackers do — then close them and stay compliant.",
+    offerings: [
+      {
+        name: "Security Assessment & Audit",
+        tagline: "Know exactly where you stand",
+        timeline: "1–2 weeks",
+        includes: [
+          "Vulnerability scan of apps + infrastructure",
+          "Cloud & network configuration review",
+          "Access control + secrets audit",
+          "Dependency / supply-chain check",
+          "Prioritised risk report with fixes",
+          "Remediation walkthrough call",
+        ],
+      },
+      {
+        name: "Penetration Testing",
+        tagline: "Authorised real-world attack simulation",
+        timeline: "2–4 weeks",
+        includes: [
+          "Scoped web app + API pen test",
+          "OWASP Top 10 + business-logic testing",
+          "Authentication & authorisation testing",
+          "Exploitation proof-of-concept",
+          "Detailed findings + severity ratings",
+          "Re-test after fixes",
+        ],
+      },
+      {
+        name: "Security Hardening & Compliance",
+        tagline: "Lock it down and keep it that way",
+        timeline: "Scoped per project",
+        includes: [
+          "Server, network & cloud hardening",
+          "MFA, SSO & identity management",
+          "Backup, encryption & disaster recovery",
+          "Security monitoring + alerting",
+          "Policies & compliance prep (ISO / SOC 2 / GDPR)",
+          "Staff security-awareness guidance",
+        ],
+      },
+    ],
+  },
+  {
+    icon: Network,
+    label: "MODULE 06 · IT OPS",
+    title: "IT Administration & Managed IT",
+    blurb: "Your outsourced IT department — systems that stay up so your team stays productive.",
+    offerings: [
+      {
+        name: "Managed IT Support",
+        tagline: "Day-to-day IT, handled",
+        timeline: "Ongoing",
+        includes: [
+          "Helpdesk for staff (email / chat / call)",
+          "Workstation & device setup + onboarding",
+          "Software install, updates & patching",
+          "User account & access management",
+          "Asset & license tracking",
+          "Proactive monitoring + monthly reporting",
+        ],
+      },
+      {
+        name: "Systems & Network Administration",
+        tagline: "Servers, networks & uptime",
+        timeline: "Scoped per project",
+        includes: [
+          "Server provisioning & administration",
+          "Network setup (firewall, VPN, Wi-Fi)",
+          "Backup & disaster-recovery configuration",
+          "Performance monitoring + alerting",
+          "Patch management & maintenance windows",
+          "Documentation & runbooks",
+        ],
+      },
+      {
+        name: "Microsoft 365 & Workspace Admin",
+        tagline: "Email, identity & collaboration",
+        timeline: "3–10 days",
+        includes: [
+          "Microsoft 365 / Google Workspace setup",
+          "Email, domain & DNS configuration",
+          "User provisioning + security groups",
+          "Shared drives & permission structure",
+          "MFA + conditional access policies",
+          "Migration from existing providers",
+        ],
+      },
+    ],
   },
 ];
 
@@ -39,48 +322,81 @@ export default function Services() {
   return (
     <section id="services" className="py-[88px]" style={{ background: "#16120F" }}>
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div className="max-w-xl mb-12">
-          <p className="mono-label">What we do</p>
-          <h2 className="mt-3.5 font-semibold tracking-tight" style={{ fontSize: "clamp(28px,3.6vw,42px)", lineHeight: 1.08, letterSpacing: "-0.02em", color: "#F4EBE0" }}>
-            Services built for real{" "}
-            <span className="font-serif-italic" style={{ color: "#E29A5C" }}>business impact.</span>
-          </h2>
-          <p className="mt-4 text-base max-w-xl leading-relaxed" style={{ color: "#A89684" }}>
-            We combine deep technical expertise with a pragmatic, business-first mindset
-            to deliver software that actually moves the needle.
-          </p>
-        </div>
+        <SectionHeading
+          eyebrow="What we do"
+          title="Services built for real"
+          accent="business impact."
+          intro="Every engagement spells out exactly what's included. Pick a starting point below, or talk to us and we'll scope it to your goals and timeline."
+        />
 
-        {/* Service modules */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {services.map((s) => {
-            const Icon = s.icon;
+        {/* Modules */}
+        <div className="flex flex-col gap-16">
+          {modules.map((m) => {
+            const Icon = m.icon;
             return (
-              <div key={s.title} className="service-card p-7">
-                <Icon size={28} style={{ color: "#E29A5C" }} />
-                <p className="mono-label mt-4">{s.module}</p>
-                <div className="h-px my-3.5" style={{ background: "#3A2E24" }} />
-                <h3 className="text-lg font-semibold mb-2.5" style={{ color: "#F4EBE0" }}>{s.title}</h3>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "#A89684" }}>
-                  {s.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {s.highlights.map((h) => (
-                    <span key={h} className="chip text-xs">{h}</span>
+              <div key={m.label}>
+                {/* Module header */}
+                <Reveal
+                  className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6 pb-5"
+                  style={{ borderBottom: "1px solid #3A2E24" }}
+                >
+                  <div className="flex items-start gap-4">
+                    <Icon size={26} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
+                    <div>
+                      <p className="mono-label">{m.label}</p>
+                      <h3 className="mt-1.5 text-2xl font-semibold tracking-tight" style={{ color: "#F4EBE0", letterSpacing: "-0.01em" }}>
+                        {m.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-sm leading-relaxed max-w-sm md:text-right" style={{ color: "#A89684" }}>
+                    {m.blurb}
+                  </p>
+                </Reveal>
+
+                {/* Offerings */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {m.offerings.map((o, i) => (
+                    <Reveal key={o.name} delay={(i % 2) * 90}>
+                      <div className="service-card h-full p-7">
+                        <h4 className="text-lg font-semibold" style={{ color: "#F4EBE0" }}>{o.name}</h4>
+                        <p className="text-sm mt-1" style={{ color: "#A89684" }}>{o.tagline}</p>
+                        <div className="flex items-center gap-1.5 mt-3">
+                          <Clock size={13} style={{ color: "#5FD0C5", flexShrink: 0 }} />
+                          <span className="mono-label" style={{ color: "#5FD0C5", fontSize: "0.6875rem" }}>{o.timeline}</span>
+                        </div>
+                        <div className="h-px my-4" style={{ background: "#3A2E24" }} />
+                        <ul className="flex flex-col gap-2.5">
+                          {o.includes.map((inc) => (
+                            <li key={inc} className="flex items-start gap-2.5 text-sm leading-snug" style={{ color: "#F4EBE0" }}>
+                              <Check size={15} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
+                              <span>{inc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </Reveal>
                   ))}
                 </div>
-                <a
-                  href="#contact"
-                  className="flex items-center gap-1.5 text-sm font-semibold"
-                  style={{ color: "#E29A5C" }}
-                >
-                  Get started <ArrowRight size={14} />
-                </a>
               </div>
             );
           })}
         </div>
+
+        {/* Closing note + CTA */}
+        <Reveal
+          className="mt-16 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 p-7 rounded-md"
+          style={{ background: "#1C1610", border: "1px solid #3A2E24" }}
+        >
+          <p className="text-sm leading-relaxed max-w-xl" style={{ color: "#A89684" }}>
+            Timelines are typical estimates — final scope is set in a quick discovery
+            call. Most projects are milestone-based, and we&apos;ll always give you an
+            honest assessment before any commitment.
+          </p>
+          <a href="#contact" className="btn-primary shrink-0">
+            Get a Quote <ArrowRight size={16} />
+          </a>
+        </Reveal>
       </div>
     </section>
   );

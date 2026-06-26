@@ -96,6 +96,33 @@ body::before {
 .delay-500 { animation-delay: 0.5s; }
 .delay-600 { animation-delay: 0.6s; }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-scan, .animate-node-pulse, .animate-trace-flow, .animate-pulse-ring,
+  .brick-bg, .brick-bg * { animation: none !important; }
+}
+
+/* ── Keyboard focus (visible accessibility outline) ── */
+:focus-visible {
+  outline: 2px solid #E29A5C;
+  outline-offset: 2px;
+}
+
+/* ── Skip-to-content (a11y) ── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: #E29A5C;
+  color: #16120F;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
 /* ── Type helpers ── */
 .font-serif-italic {
   font-family: var(--font-serif), serif;

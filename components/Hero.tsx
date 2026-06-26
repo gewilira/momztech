@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 import { LogoMark } from "@/components/Logo";
 
 const lineDefs = [
@@ -16,6 +16,12 @@ function useTypewriter(lengths: number[], speed = 55, lineGap = 350) {
   const [charIdx, setCharIdx] = useState(0);
 
   useEffect(() => {
+    // Honor reduced-motion: skip the animation and show the full text immediately.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- jump to final text when motion is reduced
+      if (lineIdx < lengths.length) setLineIdx(lengths.length);
+      return;
+    }
     if (lineIdx >= lengths.length) return;
     const total = lengths[lineIdx];
     const delay = charIdx < total ? speed : lineGap;
@@ -67,6 +73,16 @@ export default function Hero() {
 
           {/* ── Left column ── */}
           <div className="animate-fadeInUp">
+            <div
+              className="inline-flex items-center gap-2 rounded-full mb-6"
+              style={{ background: "#1C1610", border: "1px solid #3A2E24", padding: "0.375rem 0.75rem 0.375rem 0.625rem" }}
+            >
+              <span className="glow-dot" style={{ width: "7px", height: "7px" }} />
+              <span className="mono-label" style={{ color: "#5FD0C5", fontSize: "0.6875rem" }}>
+                Available &middot; Accepting new clients
+              </span>
+            </div>
+
             <p className="mono-label">
               IT Consultancy &nbsp;&middot;&nbsp; <span style={{ color: "#A89684" }}>Software Solutions</span>
             </p>
@@ -91,12 +107,11 @@ export default function Hero() {
               className="mt-6 max-w-lg"
               style={{ fontFamily: "var(--font-serif), serif", fontSize: "clamp(17px,1.7vw,20px)", lineHeight: 1.55, color: "#F4EBE0", opacity: 0.86 }}
             >
-              A full-service IT consultancy backed by a team with over 30 years of
-              combined software development experience. We design, build, and scale
-              modern digital products — web apps, AI integrations, cloud
-              infrastructure, and enterprise APIs. Founded by a software engineer
-              and full-time mom whose tech-passionate husband and two daughters
-              inspire every line of code we ship.
+              A full-service IT consultancy powered by a senior engineering team with
+              30+ years of combined experience. We design, build, and scale modern
+              digital products — web apps, AI integrations, cloud infrastructure, and
+              enterprise APIs — for startups and established companies that need
+              software done right the first time.
             </p>
 
             <div className="flex flex-wrap gap-3.5 mt-8">
@@ -104,7 +119,7 @@ export default function Hero() {
                 Start a Project <ArrowRight size={16} />
               </a>
               <a href="#services" className="btn-outline">
-                <Play size={15} /> See Our Work
+                <LayoutGrid size={15} /> Explore Services
               </a>
             </div>
 
