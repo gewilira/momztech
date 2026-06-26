@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 import { LogoMark } from "@/components/Logo";
 
 const lineDefs = [
@@ -16,6 +16,12 @@ function useTypewriter(lengths: number[], speed = 55, lineGap = 350) {
   const [charIdx, setCharIdx] = useState(0);
 
   useEffect(() => {
+    // Honor reduced-motion: skip the animation and show the full text immediately.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- jump to final text when motion is reduced
+      if (lineIdx < lengths.length) setLineIdx(lengths.length);
+      return;
+    }
     if (lineIdx >= lengths.length) return;
     const total = lengths[lineIdx];
     const delay = charIdx < total ? speed : lineGap;
@@ -113,7 +119,7 @@ export default function Hero() {
                 Start a Project <ArrowRight size={16} />
               </a>
               <a href="#services" className="btn-outline">
-                <Play size={15} /> Explore Services
+                <LayoutGrid size={15} /> Explore Services
               </a>
             </div>
 

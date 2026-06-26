@@ -40,7 +40,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-7">
           {links.map((l) => (
             <a key={l.label} href={l.href} className="nav-link">
               {l.label}
@@ -53,7 +53,7 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 rounded-lg"
+          className="lg:hidden p-2 rounded-lg"
           style={{ color: "#F4EBE0" }}
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
@@ -65,7 +65,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden px-6 pb-6 pt-2 flex flex-col gap-5"
+          className="lg:hidden px-6 pb-6 pt-2 flex flex-col gap-5"
           style={{
             background: "rgba(22,18,15,0.98)",
             borderBottom: "1px solid #3A2E24",

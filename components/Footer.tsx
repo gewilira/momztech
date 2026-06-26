@@ -1,5 +1,4 @@
 import { Mail, ArrowUp } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/Icons";
 import Logo from "@/components/Logo";
 
 export default function Footer() {
@@ -18,32 +17,14 @@ export default function Footer() {
               breaking things. A senior engineering team you can trust from first
               line of code to production scale.
             </p>
-            <div className="flex items-center gap-3 mt-1">
-              <a
-                href="mailto:gewilira.morales@momztech.com"
-                className="w-9 h-9 rounded flex items-center justify-center transition-colors"
-                style={{ border: "1px solid #3A2E24" }}
-                aria-label="Email"
-              >
-                <Mail size={15} style={{ color: "#E29A5C" }} />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded flex items-center justify-center transition-colors"
-                style={{ border: "1px solid #3A2E24" }}
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon size={15} style={{ color: "#E29A5C" }} />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 rounded flex items-center justify-center transition-colors"
-                style={{ border: "1px solid #3A2E24" }}
-                aria-label="GitHub"
-              >
-                <GithubIcon size={15} style={{ color: "#E29A5C" }} />
-              </a>
-            </div>
+            <a
+              href="mailto:gewilira.morales@momztech.com"
+              className="inline-flex items-center gap-2.5 mt-1 px-3 h-9 transition-colors"
+              style={{ border: "1px solid #3A2E24", color: "#F4EBE0" }}
+            >
+              <Mail size={15} style={{ color: "#E29A5C" }} />
+              <span className="text-sm">gewilira.morales@momztech.com</span>
+            </a>
           </div>
 
           {/* Services */}
@@ -54,6 +35,8 @@ export default function Footer() {
                 "Web Application Development",
                 "AI Consultation & Integration",
                 "Cloud Architecture & DevOps",
+                "Cybersecurity & Compliance",
+                "IT Administration & Managed IT",
                 "Enterprise Software & APIs",
               ].map((s) => (
                 <li key={s}>

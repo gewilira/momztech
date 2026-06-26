@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Fraunces, JetBrains_Mono } from "next/font/google";
 import CircuitBackground from "@/components/CircuitBackground";
 import "./globals.css";
@@ -22,7 +22,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#16120F",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://momztech.com"),
   title: "MomzTech | IT Consultancy & Software Solutions",
   description:
     "MomzTech is an IT consultancy delivering custom web applications, AI integration, cloud architecture, and enterprise software solutions.",
@@ -55,6 +60,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${fraunces.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <body className="antialiased">
+        <a href="#top" className="skip-link">Skip to content</a>
         <CircuitBackground />
         {children}
       </body>

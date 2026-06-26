@@ -31,7 +31,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-[100px]" style={{ background: "#1A130E", borderTop: "1px solid #251C15", borderBottom: "1px solid #251C15" }}>
+    <section id="process" className="py-[100px]" style={{ background: "#1A130E", borderTop: "1px solid #3A2E24", borderBottom: "1px solid #3A2E24" }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
           eyebrow="How we work"

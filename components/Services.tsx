@@ -1,4 +1,4 @@
-import { Globe, Brain, Cloud, Server, Check, Clock, ArrowRight } from "lucide-react";
+import { Globe, Brain, Cloud, Server, ShieldCheck, Network, Check, Clock, ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
@@ -218,6 +218,100 @@ const modules: ServiceModule[] = [
           "Design system (colours, fonts, components)",
           "Handoff-ready developer assets",
           "2 revision rounds",
+        ],
+      },
+    ],
+  },
+  {
+    icon: ShieldCheck,
+    label: "MODULE 05 · SECURITY",
+    title: "Cybersecurity & Compliance",
+    blurb: "Find the gaps before attackers do — then close them and stay compliant.",
+    offerings: [
+      {
+        name: "Security Assessment & Audit",
+        tagline: "Know exactly where you stand",
+        timeline: "1–2 weeks",
+        includes: [
+          "Vulnerability scan of apps + infrastructure",
+          "Cloud & network configuration review",
+          "Access control + secrets audit",
+          "Dependency / supply-chain check",
+          "Prioritised risk report with fixes",
+          "Remediation walkthrough call",
+        ],
+      },
+      {
+        name: "Penetration Testing",
+        tagline: "Authorised real-world attack simulation",
+        timeline: "2–4 weeks",
+        includes: [
+          "Scoped web app + API pen test",
+          "OWASP Top 10 + business-logic testing",
+          "Authentication & authorisation testing",
+          "Exploitation proof-of-concept",
+          "Detailed findings + severity ratings",
+          "Re-test after fixes",
+        ],
+      },
+      {
+        name: "Security Hardening & Compliance",
+        tagline: "Lock it down and keep it that way",
+        timeline: "Scoped per project",
+        includes: [
+          "Server, network & cloud hardening",
+          "MFA, SSO & identity management",
+          "Backup, encryption & disaster recovery",
+          "Security monitoring + alerting",
+          "Policies & compliance prep (ISO / SOC 2 / GDPR)",
+          "Staff security-awareness guidance",
+        ],
+      },
+    ],
+  },
+  {
+    icon: Network,
+    label: "MODULE 06 · IT OPS",
+    title: "IT Administration & Managed IT",
+    blurb: "Your outsourced IT department — systems that stay up so your team stays productive.",
+    offerings: [
+      {
+        name: "Managed IT Support",
+        tagline: "Day-to-day IT, handled",
+        timeline: "Ongoing",
+        includes: [
+          "Helpdesk for staff (email / chat / call)",
+          "Workstation & device setup + onboarding",
+          "Software install, updates & patching",
+          "User account & access management",
+          "Asset & license tracking",
+          "Proactive monitoring + monthly reporting",
+        ],
+      },
+      {
+        name: "Systems & Network Administration",
+        tagline: "Servers, networks & uptime",
+        timeline: "Scoped per project",
+        includes: [
+          "Server provisioning & administration",
+          "Network setup (firewall, VPN, Wi-Fi)",
+          "Backup & disaster-recovery configuration",
+          "Performance monitoring + alerting",
+          "Patch management & maintenance windows",
+          "Documentation & runbooks",
+        ],
+      },
+      {
+        name: "Microsoft 365 & Workspace Admin",
+        tagline: "Email, identity & collaboration",
+        timeline: "3–10 days",
+        includes: [
+          "Microsoft 365 / Google Workspace setup",
+          "Email, domain & DNS configuration",
+          "User provisioning + security groups",
+          "Shared drives & permission structure",
+          "MFA + conditional access policies",
+          "Migration from existing providers",
         ],
       },
     ],

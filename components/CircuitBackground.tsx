@@ -15,7 +15,7 @@ const traceLines: { x1: string; y1: string; x2: string; y2: string; color: strin
 export default function CircuitBackground() {
   return (
     <div
-      className="fixed inset-0 overflow-hidden pointer-events-none"
+      className="brick-bg fixed inset-0 overflow-hidden pointer-events-none"
       aria-hidden="true"
       style={{
         WebkitMaskImage: "radial-gradient(ellipse 100% 85% at 50% 0%, #000 0%, transparent 95%)",

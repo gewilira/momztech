@@ -59,18 +59,18 @@ export default function Contact() {
                 icon: LinkedinIcon,
                 label: "LinkedIn",
                 value: "linkedin.com/company/momztech",
-                href: "#",
+                href: undefined,
               },
               {
                 icon: Globe,
                 label: "Location",
                 value: "Remote · Worldwide",
-                href: "#",
+                href: undefined,
               },
             ].map((item) => {
               const Icon = item.icon;
-              return (
-                <a key={item.label} href={item.href} className="ctline flex items-start gap-3.5 p-5">
+              const content = (
+                <>
                   <Icon size={20} style={{ color: "#E29A5C", flexShrink: 0, marginTop: "2px" }} />
                   <div>
                     <div className="mono-label" style={{ fontSize: "0.6875rem" }}>
@@ -78,7 +78,16 @@ export default function Contact() {
                     </div>
                     <div className="text-sm font-medium mt-1" style={{ color: "#F4EBE0" }}>{item.value}</div>
                   </div>
+                </>
+              );
+              return item.href ? (
+                <a key={item.label} href={item.href} className="ctline flex items-start gap-3.5 p-5">
+                  {content}
                 </a>
+              ) : (
+                <div key={item.label} className="ctline flex items-start gap-3.5 p-5">
+                  {content}
+                </div>
               );
             })}
 
@@ -255,7 +264,7 @@ export default function Contact() {
                       </>
                     ) : (
                       <>
-                        <Send size={16} /> Send Project Inquiry
+                        <Send size={16} /> Send Inquiry
                       </>
                     )}
                   </button>
