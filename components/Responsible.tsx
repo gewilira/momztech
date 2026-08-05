@@ -32,14 +32,14 @@ const principles = [
   {
     icon: Sparkles,
     color: "#0A7681",
-    title: "Human-centered AI",
-    body: "AI applied to help people do better work — practical and transparent, never hype for its own sake.",
+    title: "Private, human-centered AI",
+    body: "AI applied to help people do better work — and wherever it matters, running on hardware you own, so your documents never become someone else's training data.",
   },
   {
     icon: Code2,
     color: "#1E73C8",
     title: "Open & maintainable",
-    body: "Clean, documented code with no lock-in and no black boxes — your team can always build on what we ship.",
+    body: "Clean documented code, open-weight models, no lock-in and no black boxes — your team can always inspect, change, or take over what we ship.",
   },
 ];
 

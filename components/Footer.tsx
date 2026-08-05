@@ -12,10 +12,10 @@ export default function Footer() {
             <Logo size={24} />
 
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#5C6B76" }}>
-              IT consultancy delivering custom web applications, AI solutions, and
-              cloud infrastructure for companies that want to move fast without
-              breaking things. A senior engineering team you can trust from first
-              line of code to production scale.
+              We build local AI boxes — GPU appliances preloaded with open models,
+              installed on your premises and supported by us, so your data never
+              leaves your building. Plus the web apps, cloud, security, and managed
+              IT that keep it all running.
             </p>
             <a
               href="mailto:info@momztech.com"
@@ -32,16 +32,17 @@ export default function Footer() {
             <h5 className="mono-label mb-3.5">Services</h5>
             <ul className="flex flex-col gap-2.5 text-sm">
               {[
-                "Web Application Development",
-                "AI Consultation & Integration",
-                "Cloud Architecture & DevOps",
-                "Cybersecurity & Compliance",
-                "IT Administration & Managed IT",
-                "Enterprise Software & APIs",
+                { label: "Local AI Box (On-Premise AI)",       href: "#ai-box" },
+                { label: "Web Application Development",        href: "#services" },
+                { label: "AI Integration & Automation",        href: "#services" },
+                { label: "Cloud Architecture & DevOps",        href: "#services" },
+                { label: "Enterprise Software, Mobile & APIs", href: "#services" },
+                { label: "Cybersecurity & Compliance",         href: "#services" },
+                { label: "IT Administration & Managed IT",     href: "#services" },
               ].map((s) => (
-                <li key={s}>
-                  <a href="#services" className="nav-link">
-                    {s}
+                <li key={s.label}>
+                  <a href={s.href} className="nav-link">
+                    {s.label}
                   </a>
                 </li>
               ))}
@@ -53,6 +54,7 @@ export default function Footer() {
             <h5 className="mono-label mb-3.5">Company</h5>
             <ul className="flex flex-col gap-2.5 text-sm">
               {[
+                { label: "AI Box",   href: "#ai-box" },
                 { label: "Services", href: "#services" },
                 { label: "Process",  href: "#process" },
                 { label: "Why Us",   href: "#why-us" },

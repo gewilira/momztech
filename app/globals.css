@@ -120,6 +120,12 @@ body::after {
   from { transform: translateX(0); }
   to   { transform: translateX(-24px); }
 }
+/* an appliance status LED — opacity only, so it is safe on an SVG <circle>
+   (node-pulse scales, which on an SVG child scales about the SVG origin) */
+@keyframes led-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
 
 .animate-fadeInUp   { animation: fadeInUp 0.7s ease-out both; }
 .animate-fadeIn     { animation: fadeIn   0.8s ease-out both; }
@@ -131,6 +137,7 @@ body::after {
 .animate-leaf-sway  { animation: leaf-sway 5s ease-in-out infinite; transform-origin: bottom center; }
 .animate-spin-slow  { animation: spin-slow 24s linear infinite; }
 .animate-globe-spin { animation: globe-spin 11s linear infinite; }
+.animate-led        { animation: led-blink 2.2s ease-in-out infinite; }
 
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
@@ -142,6 +149,7 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .animate-scan, .animate-node-pulse, .animate-trace-flow, .animate-pulse-ring,
   .animate-drift, .animate-leaf-sway, .animate-spin-slow, .animate-globe-spin,
+  .animate-led,
   .brick-bg, .brick-bg * { animation: none !important; }
 }
 
@@ -356,6 +364,34 @@ body::after {
 }
 .service-card:hover::before { opacity: 0.95; }
 .service-card:hover::after { border-color: #16B6C4; }
+
+/* ── Service module accordion row ──
+   Not .service-card: that card's ::after HUD bracket sits exactly where the
+   chevron goes, and its translateY(-4px) hover lift is heavy on a full-width
+   row. The :has() rule keeps an open row highlighted without any JS class. */
+.module-row {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid #D3E1EC;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px rgba(20,32,43,0.04);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.module-row:hover { border-color: #1E73C8; }
+.module-row:has(> button[aria-expanded="true"]) { border-color: #1E73C8; }
+
+/* ── Hero stat band ──
+   Dividers between cells, never dangling at the start of a row. The grid is
+   2-up on mobile and 4-up from md, so the rules have to move with it —
+   which an inline `border-left` on each cell cannot do. */
+.stat-band > * { border-left: 1px solid #D3E1EC; }
+.stat-band > *:nth-child(2n + 1) { border-left: none; }
+.stat-band > *:nth-child(n + 3)  { border-top: 1px solid #D3E1EC; }
+@media (min-width: 768px) {
+  .stat-band > *:nth-child(2n + 1) { border-left: 1px solid #D3E1EC; }
+  .stat-band > *:first-child       { border-left: none; }
+  .stat-band > *:nth-child(n + 3)  { border-top: none; }
+}
 
 /* ── Why-us card ── */
 .why-card {

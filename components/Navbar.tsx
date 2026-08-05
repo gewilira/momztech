@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Logo from "@/components/Logo";
 
 const links = [
+  { label: "AI Box",   href: "#ai-box" },
   { label: "Services", href: "#services" },
   { label: "Process",  href: "#process" },
   { label: "Why Us",   href: "#why-us" },
@@ -47,7 +48,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="#contact" className="btn-primary text-sm py-2.5 px-4">
-            Get a Quote
+            Book a Consult
           </a>
         </div>
 
@@ -77,7 +78,7 @@ export default function Navbar() {
             </a>
           ))}
           <a href="#contact" className="btn-primary text-sm text-center justify-center" onClick={() => setOpen(false)}>
-            Get a Quote
+            Book a Consult
           </a>
         </div>
       )}
