@@ -7,8 +7,9 @@ import { submitInquiry, type ContactState } from "@/app/actions/contact";
 import Reveal from "@/components/Reveal";
 
 const services = [
+  "Local AI Box (On-Premise AI)",
   "Web Application Development",
-  "AI Consultation & Integration",
+  "AI Integration & Automation",
   "Cloud Architecture & DevOps",
   "Enterprise Software, Mobile & APIs",
   "Cybersecurity & Compliance",
@@ -41,8 +42,9 @@ export default function Contact() {
             <span className="font-serif-italic" style={{ color: "#1E73C8" }}>great together.</span>
           </h2>
           <p className="mt-4 text-base max-w-xl leading-relaxed" style={{ color: "#5C6B76" }}>
-            Tell us about your project. We respond within 24 hours with an honest
-            assessment and next steps — no commitment required.
+            Tell us about your project — or about the data you&apos;d like to keep
+            in-house. We respond within 24 hours with an honest assessment and next
+            steps, no commitment required.
           </p>
         </Reveal>
 

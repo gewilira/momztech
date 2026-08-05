@@ -16,6 +16,7 @@ const plans: Plan[] = [
     features: [
       "Bug fixes & security patches",
       "Uptime monitoring",
+      "AI box health checks & security patching",
       "Up to 5 hours / month",
       "Email support",
     ],
@@ -27,6 +28,7 @@ const plans: Plan[] = [
       "Everything in Basic",
       "Minor feature updates",
       "Content changes",
+      "Model updates & prompt tuning",
       "Up to 15 hours / month",
     ],
     featured: true,
@@ -38,6 +40,7 @@ const plans: Plan[] = [
       "Everything in Standard",
       "Priority support",
       "Monthly reports",
+      "Quarterly model benchmark & capacity review",
       "Up to 30 hours / month",
     ],
   },
@@ -55,7 +58,7 @@ export default function CarePlans() {
           eyebrow="Retainer · Care"
           title="Monthly care to keep you"
           accent="moving."
-          intro="After launch, we keep your product secure, updated, and improving — pick the level of hands-on support that fits how fast you're growing."
+          intro="After launch — or after your AI box goes live — we keep everything secure, updated, and improving. Pick the level of hands-on support that fits how fast you're growing."
         />
 
         {/* Plans */}
@@ -97,6 +100,8 @@ export default function CarePlans() {
         <p className="mt-8 text-sm leading-relaxed max-w-2xl" style={{ color: "#5C6B76" }}>
           Hosting and third-party fees (cloud, payment gateways, app store accounts)
           are billed at cost. Every plan is month-to-month — scale up or pause anytime.
+          AI box hardware is a one-off purchase you own outright; the retainer only
+          covers keeping it healthy.
         </p>
       </div>
     </section>

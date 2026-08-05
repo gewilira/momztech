@@ -1,13 +1,7 @@
-import { Globe, Brain, Cloud, Server, ShieldCheck, Network, Check, Clock, ArrowRight } from "lucide-react";
+import { Globe, Brain, Cloud, Server, ShieldCheck, Network, ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-
-type Offering = {
-  name: string;
-  tagline: string;
-  timeline: string;
-  includes: string[];
-};
+import ServiceModuleCard, { type Offering } from "@/components/ServiceModuleCard";
 
 type ServiceModule = {
   icon: typeof Globe;
@@ -15,6 +9,10 @@ type ServiceModule = {
   title: string;
   blurb: string;
   offerings: Offering[];
+  /** Optional pointer out of this module — used to send AI enquiries to the
+   *  flagship on-premise box section. Must stay plain data: it crosses the
+   *  server → client boundary. */
+  crossLink?: { label: string; href: string };
 };
 
 const modules: ServiceModule[] = [
@@ -85,8 +83,9 @@ const modules: ServiceModule[] = [
   {
     icon: Brain,
     label: "MODULE 02 · AI",
-    title: "AI Consultation & Integration",
-    blurb: "Practical AI that plugs into your workflows.",
+    title: "AI Integration & Automation",
+    blurb: "Chatbots, voice agents, and workflow automation — plus the flagship on-premise box.",
+    crossLink: { label: "Looking for a private, on-premise AI box? That's our flagship", href: "#ai-box" },
     offerings: [
       {
         name: "AI Chatbot",
@@ -114,7 +113,7 @@ const modules: ServiceModule[] = [
       },
       {
         name: "AI Strategy & Integration",
-        tagline: "LLM, RAG & workflow automation",
+        tagline: "LLM, RAG & automation — cloud or on-prem",
         timeline: "Scoped per project",
         includes: [
           "AI opportunity assessment",
@@ -323,83 +322,27 @@ export default function Services() {
     <section id="services" className="py-[88px]" style={{ background: "#F2F8FD" }}>
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading
-          eyebrow="What we do"
-          title="Services built for real"
-          accent="business impact."
-          intro="Every engagement spells out exactly what's included. Pick a starting point below, or talk to us and we'll scope it to your goals and timeline."
+          eyebrow="Everything else we do"
+          title="The rest of the stack, from"
+          accent="web to managed IT."
+          intro="The AI box is our flagship, but it sits on top of everything else we build and run. Six modules, thirty years of combined experience — open one to see exactly what's included."
         />
 
-        {/* Modules */}
-        <div className="flex flex-col gap-16">
-          {modules.map((m) => {
+        {/* Modules — collapsed by default; the chip row telegraphs what's inside */}
+        <div className="flex flex-col gap-4">
+          {modules.map((m, i) => {
             const Icon = m.icon;
             return (
-              <div key={m.label}>
-                {/* Module header */}
-                <Reveal
-                  className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6 pb-5"
-                  style={{
-                    borderBottom: "2px solid",
-                    borderImageSource: "linear-gradient(90deg, #1E73C8, #16B6C4 26%, #D3E1EC 62%, rgba(211,225,236,0))",
-                    borderImageSlice: 1,
-                  }}
-                >
-                  <div className="flex items-start gap-4">
-                    {/* tech badge */}
-                    <div
-                      className="relative flex items-center justify-center shrink-0"
-                      style={{
-                        width: "50px",
-                        height: "50px",
-                        borderRadius: "13px",
-                        background: "linear-gradient(145deg, rgba(30,115,200,0.12), rgba(22,182,196,0.12))",
-                        border: "1px solid rgba(30,115,200,0.25)",
-                        boxShadow: "0 0 0 4px rgba(30,115,200,0.04)",
-                      }}
-                    >
-                      <Icon size={23} style={{ color: "#1E73C8" }} />
-                      <span
-                        className="absolute rounded-full"
-                        style={{ top: "7px", right: "7px", width: "5px", height: "5px", background: "#16B6C4", boxShadow: "0 0 6px #16B6C4" }}
-                      />
-                    </div>
-                    <div>
-                      <p className="mono-label">{m.label}</p>
-                      <h3 className="mt-1.5 text-2xl font-semibold tracking-tight" style={{ color: "#14202B", letterSpacing: "-0.01em" }}>
-                        {m.title}
-                      </h3>
-                    </div>
-                  </div>
-                  <p className="text-sm leading-relaxed max-w-sm md:text-right" style={{ color: "#5C6B76" }}>
-                    {m.blurb}
-                  </p>
-                </Reveal>
-
-                {/* Offerings */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {m.offerings.map((o, i) => (
-                    <Reveal key={o.name} delay={(i % 2) * 90}>
-                      <div className="service-card h-full p-7">
-                        <h4 className="text-lg font-semibold" style={{ color: "#14202B" }}>{o.name}</h4>
-                        <p className="text-sm mt-1" style={{ color: "#5C6B76" }}>{o.tagline}</p>
-                        <div className="flex items-center gap-1.5 mt-3">
-                          <Clock size={13} style={{ color: "#0A7681", flexShrink: 0 }} />
-                          <span className="mono-label" style={{ color: "#0A7681", fontSize: "0.6875rem" }}>{o.timeline}</span>
-                        </div>
-                        <div className="h-px my-4" style={{ background: "#D3E1EC" }} />
-                        <ul className="flex flex-col gap-2.5">
-                          {o.includes.map((inc) => (
-                            <li key={inc} className="flex items-start gap-2.5 text-sm leading-snug" style={{ color: "#36474F" }}>
-                              <Check size={15} style={{ color: "#2E7D46", flexShrink: 0, marginTop: "2px" }} />
-                              <span>{inc}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
+              <Reveal key={m.label} delay={(i % 3) * 90}>
+                <ServiceModuleCard
+                  icon={<Icon size={23} style={{ color: "#1E73C8" }} />}
+                  label={m.label}
+                  title={m.title}
+                  blurb={m.blurb}
+                  offerings={m.offerings}
+                  crossLink={m.crossLink}
+                />
+              </Reveal>
             );
           })}
         </div>

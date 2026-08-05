@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import AIBox from "@/components/AIBox";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import WhyUs from "@/components/WhyUs";
@@ -15,6 +16,7 @@ export default function Home() {
     <main style={{ color: "#14202B" }}>
       <Navbar />
       <Hero />
+      <AIBox />
       <Services />
       <Process />
       <WhyUs />

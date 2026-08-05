@@ -28,23 +28,28 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://momztech.com"),
-  title: "MomzTech | Technology in Balance with the World",
+  title: "MomzTech | Local AI Boxes — AI That Runs on Your Own Hardware",
   description:
-    "MomzTech builds modern web, AI, and cloud software that's fast and future-ready — yet efficient, accessible, and built to last. Powerful technology in balance with nature and people.",
+    "Turnkey local AI boxes: a GPU appliance preloaded with open models, installed on your premises and supported on a retainer. Your data never leaves your building.",
   keywords: [
+    "Local AI Box",
+    "On-Premise AI",
+    "Private LLM",
+    "Self-Hosted AI",
+    "Local LLM Server",
+    "On-Prem RAG",
+    "Data Sovereignty",
+    "GPU AI Appliance",
     "Responsible Technology",
-    "Sustainable Software",
     "Web Application Development",
-    "AI Consultation",
     "Cloud Architecture",
-    "Accessible Software",
-    "Software Solutions",
+    "Managed IT",
     "momztech",
   ],
   openGraph: {
-    title: "MomzTech | Technology in Balance with the World",
+    title: "MomzTech | Local AI Boxes — AI That Runs on Your Own Hardware",
     description:
-      "Powerful technology that respects the people, and the world, it serves — fast and future-ready, yet efficient, accessible, and built to last.",
+      "We build the box, install it in your building, and support it. Private AI, no cloud, no metered prompts — powerful technology in balance with the world.",
     siteName: "MomzTech",
     type: "website",
   },
